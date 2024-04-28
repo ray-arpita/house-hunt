@@ -2,8 +2,14 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Button, Avatar, Grid } from '@material-ui/core';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CottageIcon from '@mui/icons-material/Cottage';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const savedList = () =>{
+navigate('/saved-items')
+  }
   return (
     <>
       <AppBar position="static" style={{ backgroundColor: 'white', color : 'orange' }}>
@@ -17,7 +23,7 @@ const Navbar = () => {
              
             </Grid>
             <Grid item xs={1} container>
-              <Button color="inherit" variant="outlined" startIcon={<FavoriteIcon />}>Saved</Button>
+              <Button color="inherit" variant="outlined" startIcon={<FavoriteIcon />} onClick={savedList}>Saved</Button>
             </Grid>
             <Grid item xs={1} container  alignItems="center">
                 <Avatar alt="Avatar" src="/avatar.jpg" />

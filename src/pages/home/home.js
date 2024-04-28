@@ -1,5 +1,6 @@
 import React, {useState,useEffect } from 'react'
 import CommonCard from '../../components/card/card'
+import { Grid } from '@mui/material';
 
 const Home = () => {
 
@@ -20,17 +21,26 @@ const Home = () => {
       console.error(error.message);
     }
   }
-  console.log(properties , "<<<< PROPERTIES")
+
   
 useEffect(()=> {
   fetchData()
 },[])
 
   return (
-    <>
-    <CommonCard/>
+    <Grid m={5}  display={'flex'} flexWrap={'wrap'} justifyContent={'space-evenly'}>
+    { properties.map((property)=> {
+      console.log(property , "<<< SINGLE")
+      return (
+        <>
+        <CommonCard  key={property.id} name={property?.name} image={property?.thumbnail} price={property?.displayPrice?.fixedPrice} city={property?.address?.city?.name}/>
+        </>
+      )
+    })
+  
+    }
       
-    </>
+    </Grid>
   )
 }
 
